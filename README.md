@@ -17,6 +17,7 @@ https://nondanee.github.io/Contribution-Graph
 ## 功能
 
 - 使用localStorge 恢复你上次的脑洞
+- 点击格子会变颜色，循环的，点一圈可以点回来
 - 左上角的空缺为reset键，左键点击清空画板，右键点击恢复到缺省
 
 ## 欧了
