@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta name="viewport" content="width=device-width, initial-scale=2.0, maximum-scale=2.0, user-scalable=no">
+	<style type="text/css">
+		html,body{
+			width: 100%;
+			height: 100%;
+			margin: 0;
+		}
+		.year,
+		.graph{
+			position: absolute;
+			top: 0;right: 0;bottom: 0;left: 0;margin: auto;
+			height: calc(8 * 24px);
+			width: calc(33 * 24px);
+			display: flex;
+		}
+		.year{
+			justify-content: space-between;
+			font-family: Arial;
+			bottom: 60px;
+			font-size: 20px;
+			font-weight: bold;
+			color: #c7c7c7;
+		}
+		.graph{
+			
+			flex-direction: column;
+			flex-wrap: wrap;
+			align-content: flex-start
+		}
+		button{
+			width: 20px;
+			height: 20px;
+			margin: 2px;
+			border: 0;
+			padding: 0;
+			outline: 0;
+			cursor: pointer;
+		}
+		.type0{
+			background-color: transparent;
+		}
+		.type1{
+			background-color: #eeeeee;
+		}
+		.type2{
+			background-color: #d6e685;
+		}
+		.type3{
+			background-color: #8ac760;
+		}
+		.type4{
+			background-color: #40a43a;
+		}
+		.type5{
+			background-color: #1e6823;
+		}
+	</style>
+</head>
+<body>
+<div class="year">
+	<span>2014</span>
+	<span>2015</span>
+	<span>2016</span>
+	<span>2017</span>
+	<span>2018</span>
+	<span>2019</span>
+</div>
+<div class="graph">
+	<button class="type0"></button>
+</div>
+<script type="text/javascript">
+	var template = '01111111111111111111111111111111111122222344555252222224522222253222222525222242222222222522244252322225422422253222422325222352222222222522254252422225522322253222322524222452222222225435355452252225422522235223222432222225222222222111111111111111111111111111111'
+	var graph = document.getElementsByClassName('graph')[0]
+	var start = new Date(2013,11,30).getTime()
+	var end = new Date(2018,11,31).getTime()
+	var enter = new Date(2014,8,1).getTime()
+	var graduate = new Date(2018,5,10).getTime() 
+	for(var t=start;t<=end;t+=7*24*3600*1000){
+		var button = document.createElement('button')
+		if(t < enter||t > graduate)
+			button.className = 'type1'
+		else
+			button.className = 'type2'
+		button.onclick = function(){
+			var type = parseInt(this.className.match(/\d+/))
+			this.className = `type${(type+1)%6}`
+		}
+		button.title = new Date(t).toString().slice(0,15)
+		graph.appendChild(button)
+	}
+	window.onbeforeunload = function(){
+		var store = Array.from(document.getElementsByTagName('button')).map(function(element){
+			return parseInt(element.className.match(/\d+/))
+		}).join('')
+		localStorage.setItem('store',store)
+	}
+	window.onload = function(){
+		var buttons = document.getElementsByTagName('button')
+		buttons[0].title = 'Clear'
+		buttons[0].onclick = function(){
+			window.onbeforeunload = null
+			localStorage.setItem('store','')
+			window.location.reload()
+		}
+		buttons[0].oncontextmenu = function(event){
+			event.preventDefault()
+			window.onbeforeunload = null
+			localStorage.setItem('store',template)
+			window.location.reload()
+		}
+		var store = localStorage.getItem('store')
+		store = (store == null) ? template : store
+		store.split('').forEach(function(type,index){
+			buttons[index].className = `type${type}`
+		})
+	}
+</script>
+</body>
+</html>
