@@ -1,7 +1,5 @@
 # Contribution Graph 毕业衫创意
 
-不多BB，你想画啥就画啥
-
 <div align=center>
 	<img src="preview.png">
 </div>
