@@ -3,7 +3,7 @@
 不多BB，你想画啥就画啥
 
 <div align=center>
-![](preview.png)
+	<img src="preview.png">
 </div>
 
 ## 说明
