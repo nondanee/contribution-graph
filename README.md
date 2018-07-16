@@ -1,14 +1,15 @@
 # Contribution Graph 毕业衫创意
 
-[nondanee.github.io/Contribution-Graph](https://nondanee.github.io/Contribution-Graph)
-
 不多BB，你想画啥就画啥
-<img src="preview.png" width="100%">
+
+<div align=center>
+![](preview.png)
+</div>
 
 ## 说明
 
 - 时间轴从 2013.12.30 (周一) 到 2018.12.31
-- 默认的浅绿色范围是在校时间 2014.9.1到 2018.6.10
+- 默认的浅绿色范围是在校时间 2014.9.1到 2018.6.30
 - 一小格代表一周
 - 鼠标指向小格时会显示日期
 
